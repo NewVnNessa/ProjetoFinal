@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SiteEventos</title>
+    <title>Eventos</title>
 
     <!-- Fonte Rajdhani -->
     <link
@@ -26,37 +26,17 @@
     </header>
 
     <main>
-      <h1>Próximos Eventos</h1>
       <div class="eventos" id="eventos-destaque"></div>
     </main>
 
     <script>
-      const eventos = JSON.parse(localStorage.getItem("eventos") || "[]").slice(
-        0,
-        3
-      );
-      if (!eventos?.length) {
-        eventos.push({
-          titulo: "Javascript",
-          data: "10/06/2025",
-          hora: "10:00",
-          local: "São Paulo",
-          imagem:
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwCV6pkoBzfVUeYqCGwtx7_LHWPu2FXjEGOA&s",
-        });
-        eventos.push({
-          titulo: "Python",
-          data: "10/06/2025",
-          hora: "10:00",
-          local: "São Carlos",
-          imagem:
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1200px-Python-logo-notext.svg.png",
-        });
+      const eventos = JSON.parse(localStorage.getItem("eventos") || "[]");
 
-        localStorage.setItem("eventos", JSON.stringify(eventos));
-      }
+      const url = new URL(window.location.href);
+      const params = new URLSearchParams(url.search);
+      const titulo = params.get("titulo");
 
-      console.log("eventos", eventos);
+      const evento = eventos.find((e) => e.titulo === titulo);
 
       const container = document.getElementById("eventos-destaque");
       container.style.display = "flex";
@@ -64,26 +44,24 @@
       container.style.gap = "20px";
       container.style.justifyContent = "center";
 
-      eventos.forEach((evento) => {
-        const card = document.createElement("div");
-        card.style.background = "#fff";
-        card.style.color = "#000";
-        card.style.padding = "10px";
-        card.style.borderRadius = "8px";
-        card.style.width = "300px";
-        card.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.1)";
+      const card = document.createElement("div");
+      card.style.background = "#fff";
+      card.style.color = "#000";
+      card.style.padding = "10px";
+      card.style.borderRadius = "8px";
+      card.style.width = "300px";
+      card.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.1)";
 
-        card.innerHTML = `
+      card.innerHTML = `
             <img src="${evento.imagem}" alt="${evento.titulo}" style="width:100%; height:180px; object-fit:cover; border-radius:5px;">
             <h3>${evento.titulo}</h3>
             <p><strong>Data:</strong> ${evento.data}</p>
             <p><strong>Hora:</strong> ${evento.hora}</p>
             <p><strong>Local:</strong> ${evento.local}</p>
-            <a href="detalhes-evento.html?titulo=${evento.titulo}" class="botao-link">Ver detalhes</a>
+            <a href="cadastrar-evento.html?id=${evento.id}" class="botao-link">Ver detalhes</a>
         `;
 
-        container.appendChild(card);
-      });
+      container.appendChild(card);
     </script>
   </body>
 </html>

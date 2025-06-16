@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SiteEventos</title>
+    <title>Eventos</title>
 
     <!-- Fonte Rajdhani -->
     <link
@@ -26,35 +26,12 @@
     </header>
 
     <main>
-      <h1>Próximos Eventos</h1>
+      <h1>Todos Eventos</h1>
       <div class="eventos" id="eventos-destaque"></div>
     </main>
 
     <script>
-      const eventos = JSON.parse(localStorage.getItem("eventos") || "[]").slice(
-        0,
-        3
-      );
-      if (!eventos?.length) {
-        eventos.push({
-          titulo: "Javascript",
-          data: "10/06/2025",
-          hora: "10:00",
-          local: "São Paulo",
-          imagem:
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwCV6pkoBzfVUeYqCGwtx7_LHWPu2FXjEGOA&s",
-        });
-        eventos.push({
-          titulo: "Python",
-          data: "10/06/2025",
-          hora: "10:00",
-          local: "São Carlos",
-          imagem:
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1200px-Python-logo-notext.svg.png",
-        });
-
-        localStorage.setItem("eventos", JSON.stringify(eventos));
-      }
+      const eventos = JSON.parse(localStorage.getItem("eventos") || "[]");
 
       console.log("eventos", eventos);
 
