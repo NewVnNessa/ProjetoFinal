@@ -26,10 +26,51 @@
     </header>
 
     <main>
-      <div class="eventos" id="eventos-destaque"></div>
+      <div class="eventos" id="evento"></div>
+
+      <div style="display: flex; align-items: center; justify-content: center">
+        <form class="evento-form-card">
+          <h3>Se inscrever:</h3>
+
+          <div>
+            <label for="Nome">Nome: </label>
+            <br />
+            <input required id="Nome" type="text" />
+          </div>
+
+          <div>
+            <label for="Nome">Nome: </label>
+            <br />
+            <input required id="Nome" type="email" />
+          </div>
+
+          <button class="botao-salvar" type="submit">Salvar</button>
+        </form>
+      </div>
     </main>
 
+    <footer>
+      <button id="btnTopo">Voltar ao Topo</button>
+    </footer>
+
     <script>
+      const btn = document.getElementById("btnTopo");
+
+      window.onscroll = function () {
+        if (document.documentElement.scrollTop > 0) {
+          btn.style.display = "block";
+        } else {
+          btn.style.display = "none";
+        }
+      };
+
+      btn.addEventListener("click", function () {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
+
       const eventos = JSON.parse(localStorage.getItem("eventos") || "[]");
 
       const url = new URL(window.location.href);
@@ -38,7 +79,7 @@
 
       const evento = eventos.find((e) => e.titulo === titulo);
 
-      const container = document.getElementById("eventos-destaque");
+      const container = document.getElementById("evento");
       container.style.display = "flex";
       container.style.flexWrap = "wrap";
       container.style.gap = "20px";
