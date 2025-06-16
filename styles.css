@@ -2,6 +2,7 @@ body {
   background-color: black;
   margin: 0;
   font-family: "Rajdhani", sans-serif;
+  color: white;
 }
 
 header {
@@ -49,4 +50,30 @@ h1 {
   justify-content: center;
   gap: 20px;
   padding: 20px;
+}
+.evento-form-card {
+  border-radius: 16px;
+
+  padding: 32px;
+  margin-top: 32px;
+  background-color: white;
+  color: hsl(91, 87%, 40%);
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.botao-salvar {
+  display: inline-block;
+  padding: 10px 15px;
+  background-color: #1c201b;
+  border: hsl(91, 87%, 47%);
+  color: hsl(91, 87%, 47%);
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
 }

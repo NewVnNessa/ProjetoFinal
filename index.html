@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    r
     <title>SiteEventos</title>
 
     <!-- Fonte Rajdhani -->
@@ -32,16 +31,29 @@
     </main>
 
     <script>
-      const eventos = [
-        {
-          id: 1,
-          titulo: "Workshop de Front-End",
-          data: "2025-06-20",
-          hora: "18:00",
-          local: "Auditório TechCenter",
-          imagem: "captura1.png",
-        },
-      ];
+      const eventos = JSON.parse(localStorage.getItem("eventos") || "[]");
+      if (!eventos?.length) {
+        eventos.push({
+          titulo: "Javascript",
+          data: "10/06/2025",
+          hora: "10:00",
+          local: "São Paulo",
+          imagem:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwCV6pkoBzfVUeYqCGwtx7_LHWPu2FXjEGOA&s",
+        });
+        eventos.push({
+          titulo: "Python",
+          data: "10/06/2025",
+          hora: "10:00",
+          local: "São Carlos",
+          imagem:
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1200px-Python-logo-notext.svg.png",
+        });
+
+        JSON.parse(localStorage.getItem("eventos")) || [];
+      }
+
+      console.log("eventos", eventos);
 
       const container = document.getElementById("eventos-destaque");
       container.style.display = "flex";
