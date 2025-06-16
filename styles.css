@@ -31,11 +31,13 @@ nav {
   border-radius: 5px;
   text-decoration: none;
   font-weight: bold;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  transform: scale(1);
 }
 
 .botao-link:hover {
   background-color: hsl(91, 87%, 40%);
+  transform: scale(0.90);
 }
 
 h1 {
