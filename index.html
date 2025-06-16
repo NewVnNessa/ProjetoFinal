@@ -1,116 +1,64 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    r
     <title>SiteEventos</title>
 
     <!-- Fonte Rajdhani -->
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
 
-    <style>
-        body {
-            background-color: black;
-            margin: 0;
-            font-family: 'Rajdhani', sans-serif;
-        }
-        
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 30px;
-            background-color: #1c1c1c;
-        }
-        
-        h2 {
-            color: aliceblue;
-            margin: 0;
-        }
-        
-        nav {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .botao-link {
-            display: inline-block;
-            padding: 10px 15px;
-            background-color: hsl(91, 87%, 47%);
-            color: #1c201b;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-        }
-        
-        .botao-link:hover {
-            background-color: hsl(91, 87%, 40%);
-        }
-        
-        h1 {
-            color: aliceblue;
-            text-align: center;
-            margin-top: 30px;
-        }
-        
-        .eventos {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            padding: 20px;
-        }
-    </style>
-</head>
-
-<body>
+  <body>
     <header>
-        <h2>TechCommunity</h2>
-        <nav>
-            <a href="index.html" class="botao-link">Início</a>
-            <a href="eventos.html" class="botao-link">Eventos</a>
-            <a href="cadastrar-evento.html" class="botao-link">Cadastrar Evento</a>
-            <a href="sobre.html" class="botao-link">Sobre</a>
-            <a href="contato.html" class="botao-link">Contato</a>
-        </nav>
+      <h2>TechCommunity</h2>
+      <nav>
+        <a href="index.html" class="botao-link">Início</a>
+        <a href="eventos.html" class="botao-link">Eventos</a>
+        <a href="cadastrar-evento.html" class="botao-link">Cadastrar Evento</a>
+        <a href="sobre.html" class="botao-link">Sobre</a>
+        <a href="contato.html" class="botao-link">Contato</a>
+      </nav>
     </header>
 
     <main>
-        <h1>Próximos Eventos</h1>
-        <div class="eventos" id="eventos-destaque">
-
-        </div>
+      <h1>Próximos Eventos</h1>
+      <div class="eventos" id="eventos-destaque"></div>
     </main>
 
     <script>
-        const eventos = [{
-            id: 1,
-            titulo: "Workshop de Front-End",
-            data: "2025-06-20",
-            hora: "18:00",
-            local: "Auditório TechCenter",
-            imagem: "captura1.png"
+      const eventos = [
+        {
+          id: 1,
+          titulo: "Workshop de Front-End",
+          data: "2025-06-20",
+          hora: "18:00",
+          local: "Auditório TechCenter",
+          imagem: "captura1.png",
+        },
+      ];
 
-        }];
+      const container = document.getElementById("eventos-destaque");
+      container.style.display = "flex";
+      container.style.flexWrap = "wrap";
+      container.style.gap = "20px";
+      container.style.justifyContent = "center";
 
-        const container = document.getElementById('eventos-destaque');
-        container.style.display = 'flex';
-        container.style.flexWrap = 'wrap';
-        container.style.gap = '20px';
-        container.style.justifyContent = 'center';
+      eventos.forEach((evento) => {
+        const card = document.createElement("div");
+        card.style.background = "#fff";
+        card.style.color = "#000";
+        card.style.padding = "10px";
+        card.style.borderRadius = "8px";
+        card.style.width = "300px";
+        card.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.1)";
 
-        eventos.forEach(evento => {
-            const card = document.createElement('div');
-            card.style.background = '#fff';
-            card.style.color = '#000';
-            card.style.padding = '10px';
-            card.style.borderRadius = '8px';
-            card.style.width = '300px';
-            card.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)';
-
-            card.innerHTML = `
+        card.innerHTML = `
             <img src="${evento.imagem}" alt="${evento.titulo}" style="width:100%; height:180px; object-fit:cover; border-radius:5px;">
             <h3>${evento.titulo}</h3>
             <p><strong>Data:</strong> ${evento.data}</p>
@@ -119,9 +67,8 @@
             <a href="detalhes-evento.html?id=${evento.id}" class="botao-link">Ver detalhes</a>
         `;
 
-            container.appendChild(card);
-        });
+        container.appendChild(card);
+      });
     </script>
-</body>
-
+  </body>
 </html>
